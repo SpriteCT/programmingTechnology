@@ -4,43 +4,54 @@ namespace ProgrammingTechnology
 {
     public class Student
     {
-        private string name;
-        private string surName;
-        private int score;
-        public int Score
+        private string _name;
+        private string _surName;
+        private int _score;
+        protected int Score
         {
             get
             {
-                return score;
+                return _score;
             }
             set
             {
                 if (value >= 0)
                 {
-                    score = value;
+                    _score = value;
+                }
+                else
+                {
+                    _score = 0;
                 }
             }
         }
-        public string Name
+        protected string Name
         {
             get
             {
-                return name;
+                return _name;
             }
             set
             {
-                name = value;
+                if (value.Length > 0)
+                {
+                    _name = value;
+                }
+                else
+                {
+                    throw new ArgumentNullException(nameof(value));
+                }
             }
         }
-        public string SurName
+        protected string SurName
         {
             get
             {
-                return surName;
+                return _surName;
             }
             set
             {
-                surName = value;
+                _surName = value;
             }
         }
 
@@ -61,13 +72,19 @@ namespace ProgrammingTechnology
         }
         public void GetInfo()
         {
-            Console.WriteLine($"Имя >> {name}");
-            Console.WriteLine($"Фамилия >> {surName}");
-            Console.WriteLine($"Кол-во баллов >> {score}\n");
+            Console.WriteLine($"Имя >> {_name}");
+            Console.WriteLine($"Фамилия >> {_surName}");
+            Console.WriteLine($"Кол-во баллов >> {_score}\n");
         }
         public bool IsChanceBigger(Student student)
         {
-            return this.score > student.Score;
+            return this._score > student.Score;
+        }
+
+        public void PrintChances(Student student)
+        {
+            string output = IsChanceBigger(student) ? $"У {Name} шансов поступить больше, чем у {student.Name}\n" : $"У {student.Name} шансов поступить больше, чем у {Name}\n";
+            Console.WriteLine(output);
         }
 
     }

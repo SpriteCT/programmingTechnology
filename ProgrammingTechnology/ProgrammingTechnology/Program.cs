@@ -8,12 +8,25 @@ namespace ProgrammingTechnology
         {
             Student Vasya = new Student("Vasya", "Pupkin", 300);
             Vasya.GetInfo();
+
             Student Dasha = new Student("Dasha", "Anonimka", 270);
             Dasha.GetInfo();
+
             Student Grisha = new Student("Grisha", 130);
             Grisha.GetInfo();
-            Console.WriteLine($"У Даши шансов поступить больше, чем у Васи >> {Dasha.IsChanceBigger(Vasya)}");
-            Console.WriteLine($"У Васи шансов поступить больше, чем у Гриши >> {Vasya.IsChanceBigger(Grisha)}");
+
+            SuperStudent SuperVasya = new SuperStudent("SuperVasya");
+            SuperVasya.GetInfo();
+
+            FoolishStudent NotVasya = new FoolishStudent("NotVasya", "NotPupkin");
+            NotVasya.GetInfo();
+
+            Console.WriteLine("\n\n");
+            Dasha.PrintChances(Vasya);
+            Dasha.PrintChances(Grisha);
+            SuperVasya.PrintChances(Grisha);
+            NotVasya.PrintChances(Grisha);
+
             Console.ReadKey();
         }
     }
