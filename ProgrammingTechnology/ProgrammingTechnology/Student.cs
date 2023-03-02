@@ -4,6 +4,7 @@ namespace ProgrammingTechnology
 {
     public class Student
     {
+
         private string _name;
         private string _surName;
         private int _score;
@@ -31,16 +32,10 @@ namespace ProgrammingTechnology
             {
                 return _name;
             }
-            protected set
+            private set
             {
-                if (value.Length > 0)
-                {
-                    _name = value;
-                }
-                else
-                {
-                    throw new ArgumentNullException(nameof(value));
-                }
+                IsValidName(value);
+                _name = value;
             }
         }
         public string SurName
@@ -49,8 +44,9 @@ namespace ProgrammingTechnology
             {
                 return _surName;
             }
-            protected set
+            private set
             {
+                IsValidName(value);
                 _surName = value;
             }
         }
@@ -58,7 +54,7 @@ namespace ProgrammingTechnology
         public Student(string Name, string SurName, int Score)
         {
             this.SurName = SurName;
-            this.Name = Name;
+            this.Name = Name ?? throw new ArgumentNullException(nameof(Name));
             this.Score = Score;
         }
         public Student(string Name, string SurName) : this(Name, SurName, 0)
@@ -72,20 +68,32 @@ namespace ProgrammingTechnology
         }
         public void GetInfo()
         {
-            Console.WriteLine($"Имя >> {_name}");
-            Console.WriteLine($"Фамилия >> {_surName}");
-            Console.WriteLine($"Кол-во баллов >> {_score}\n");
+            Console.WriteLine($"Имя >> {Name}");
+            Console.WriteLine($"Фамилия >> {SurName}");
+            Console.WriteLine($"Кол-во баллов >> {Score}\n");
+        }
+
+        public void PrintChances(Student student)
+        {
+            string output = IsChanceBigger(student) ?
+                $"У {Name} {SurName} шансов поступить больше, чем у {student.Name} {student.SurName}\n" :
+                $"У {student.Name} {student.SurName} шансов поступить больше, чем у {Name} {SurName}\n";
+
+            Console.WriteLine(output);
+        }
+        static private void IsValidName(string name)
+        {
+            foreach (char letter in name)
+            {
+                if (!char.IsLetter(letter))
+                {
+                    throw new ArgumentException(nameof(Name));
+                }
+            }
         }
         private bool IsChanceBigger(Student student)
         {
             return this._score > student.Score;
         }
-
-        public void PrintChances(Student student)
-        {
-            string output = IsChanceBigger(student) ? $"У {Name} шансов поступить больше, чем у {student.Name}\n" : $"У {student.Name} шансов поступить больше, чем у {Name}\n";
-            Console.WriteLine(output);
-        }
-
     }
 }

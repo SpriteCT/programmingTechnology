@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace ProgrammingTechnology
 {
     internal class FoolishStudent : Student
@@ -11,7 +10,13 @@ namespace ProgrammingTechnology
         }
         public new void GetInfo()
         {
-            Console.WriteLine($"{Name} - глупый абитуриент, никуда не поступит\n");
+            Console.WriteLine($"{Name} {SurName} - глупый абитуриент, никуда не поступит\n");
+        }
+        public void StartStudy()
+        {
+            Console.WriteLine($"{Name} {SurName} начал учиться\n");
+            Random random = new Random();
+            Score += random.Next(10, 150);
         }
     }
 }

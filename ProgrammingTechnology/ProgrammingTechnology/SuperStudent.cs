@@ -11,7 +11,12 @@ namespace ProgrammingTechnology
         }
         public new void GetInfo()
         {
-            Console.WriteLine($"{Name} - супер абитуриент, поступит везде, где хочет\n");
+            Console.WriteLine($"{Name} {SurName} - супер абитуриент, поступит везде, где хочет\n");
+        }
+        public void StartFooling()
+        {
+            Console.WriteLine($"{Name} {SurName} перестал учиться\n");
+            Score = 0;
         }
     }
 }
