@@ -7,13 +7,13 @@ namespace ProgrammingTechnology
         private string _name;
         private string _surName;
         private int _score;
-        protected int Score
+        public int Score
         {
             get
             {
                 return _score;
             }
-            set
+            protected set
             {
                 if (value >= 0)
                 {
@@ -25,13 +25,13 @@ namespace ProgrammingTechnology
                 }
             }
         }
-        protected string Name
+        public string Name
         {
             get
             {
                 return _name;
             }
-            set
+            protected set
             {
                 if (value.Length > 0)
                 {
@@ -43,13 +43,13 @@ namespace ProgrammingTechnology
                 }
             }
         }
-        protected string SurName
+        public string SurName
         {
             get
             {
                 return _surName;
             }
-            set
+            protected set
             {
                 _surName = value;
             }
@@ -76,7 +76,7 @@ namespace ProgrammingTechnology
             Console.WriteLine($"Фамилия >> {_surName}");
             Console.WriteLine($"Кол-во баллов >> {_score}\n");
         }
-        public bool IsChanceBigger(Student student)
+        private bool IsChanceBigger(Student student)
         {
             return this._score > student.Score;
         }
