@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ProgrammingTechnology
 {
     internal class FoolishStudent : Student
@@ -8,7 +9,7 @@ namespace ProgrammingTechnology
         {
             Score = int.MinValue;
         }
-        public new void GetInfo()
+        public override void GetInfo()
         {
             Console.WriteLine($"{Name} {SurName} - глупый абитуриент, никуда не поступит\n");
         }
@@ -17,6 +18,11 @@ namespace ProgrammingTechnology
             Console.WriteLine($"{Name} {SurName} начал учиться\n");
             Random random = new Random();
             Score += random.Next(10, 150);
+        }
+        public void StartStudy(int score)
+        {
+            Console.WriteLine($"{Name} {SurName} начал учиться и получил + {score} баллов\n");
+            Score += score;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ProgrammingTechnology
         {
             Score = int.MaxValue;
         }
-        public new void GetInfo()
+        public override void GetInfo()
         {
             Console.WriteLine($"{Name} {SurName} - супер абитуриент, поступит везде, где хочет\n");
         }
