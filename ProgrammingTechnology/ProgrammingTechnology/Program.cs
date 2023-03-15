@@ -11,7 +11,7 @@ namespace ProgrammingTechnology
             Console.Write("Введите фамилию >> ");
             string surName = Console.ReadLine();
             Console.Write("Введите баллы >> ");
-            int score = int.Parse(Console.ReadLine());
+            uint score = uint.Parse(Console.ReadLine());
             Console.WriteLine();
             return new Student(name, surName, score);
         }
