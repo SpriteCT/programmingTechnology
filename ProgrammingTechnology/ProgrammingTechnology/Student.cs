@@ -7,9 +7,9 @@ namespace ProgrammingTechnology
         public string SurName { get; private set; }
         public string Name { get; private set; }
 
-        public int Score { get; protected set; }
+        public uint Score { get; protected set; }
 
-        public Student(string Name, string SurName, int Score)
+        public Student(string Name, string SurName, uint Score)
         {
             this.SurName = SurName;
             this.Name = Name ?? throw new ArgumentNullException(nameof(Name));
@@ -21,7 +21,7 @@ namespace ProgrammingTechnology
         public Student(string Name) : this(Name, "")
         {
         }
-        public Student(string Name, int Score) : this(Name, "", Score)
+        public Student(string Name, uint Score) : this(Name, "", Score)
         {
         }
         public virtual void GetInfo()

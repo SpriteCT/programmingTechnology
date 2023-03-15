@@ -7,7 +7,7 @@ namespace ProgrammingTechnology
         public FoolishStudent(string Name) : this(Name, "") { }
         public FoolishStudent(string Name, string SurName) : base(Name, SurName)
         {
-            Score = int.MinValue;
+            Score = uint.MinValue;
         }
         public override void GetInfo()
         {
@@ -17,9 +17,9 @@ namespace ProgrammingTechnology
         {
             Console.WriteLine($"{Name} {SurName} начал учиться\n");
             Random random = new Random();
-            Score += random.Next(10, 150);
+            Score += (uint)random.Next(10, 150);
         }
-        public void StartStudy(int score)
+        public void StartStudy(uint score)
         {
             Console.WriteLine($"{Name} {SurName} начал учиться и получил + {score} баллов\n");
             Score += score;
