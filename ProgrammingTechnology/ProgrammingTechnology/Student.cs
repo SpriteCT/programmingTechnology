@@ -4,8 +4,32 @@ namespace ProgrammingTechnology
 {
     public class Student
     {
-        public string SurName { get; private set; }
-        public string Name { get; private set; }
+        private string _name;
+        private string _surName;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            private set
+            {
+                IsValidName(value);
+                _name = value;
+            }
+        }
+        public string SurName
+        {
+            get
+            {
+                return _surName;
+            }
+            private set
+            {
+                IsValidName(value);
+                _surName = value;
+            }
+        }
 
         public uint Score { get; protected set; }
 
@@ -30,6 +54,18 @@ namespace ProgrammingTechnology
             Console.WriteLine($"Фамилия >> {SurName}");
             Console.WriteLine($"Кол-во баллов >> {Score}\n");
         }
+        public void GetInfo(University university)
+        {
+            if (university.Students.IndexOf(this) != -1)
+            {
+                Console.WriteLine($"{this.Name} есть в {university.Name}");
+            }
+            else
+            {
+                Console.WriteLine($"{this.Name} нет в {university.Name}");
+            }
+        }
+
         public string CompareChances()
         {
             string output = Score > 150 ? $"У {Name} {SurName} Высокие шансы поступить" : $"У {Name} {SurName} низкие шансы поступить";
@@ -56,6 +92,16 @@ namespace ProgrammingTechnology
         public static bool operator <=(Student student1, Student student2)
         {
             return student1.Score <= student2.Score;
+        }
+        static private void IsValidName(string name)
+        {
+            foreach (char letter in name)
+            {
+                if (!char.IsLetter(letter))
+                {
+                    throw new ArgumentException(nameof(Name));
+                }
+            }
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace ProgrammingTechnology
 {
 
-    internal class University : Building
+    public class University : Building
     {
-        List<Student> Students { get; set; }
+        public List<Student> Students { get; set; }
 
         public override void GetInfo()
         {
