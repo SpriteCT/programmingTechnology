@@ -73,7 +73,7 @@ namespace ProgrammingTechnology
         }
         public string CompareChances(Student student)
         {
-            string output = Score > student.Score ?
+            string output = this >= student ?
                 $"У {Name} {SurName} больше шансов поступить, чем у {student.Name} {student.SurName}" :
                 $"У {student.Name} {student.SurName} больше шансов поступить, чем у {Name} {SurName}";
             return output;
